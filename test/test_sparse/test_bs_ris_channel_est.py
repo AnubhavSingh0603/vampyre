@@ -7,8 +7,14 @@ System model: y = A * h + w, where h is sparse in some domain
 """
 
 # Add the path to the vampyre package and import it
-import env
-env.add_vp_path()
+# Add the path to the vampyre package
+import os
+import sys
+for d in ('..', os.path.join('..', '..')):
+    fd = os.path.abspath(os.path.join(os.path.dirname(__file__), d))
+    if fd not in sys.path:
+        sys.path.append(fd)
+
 import vampyre as vp
 import numpy as np
 import unittest
